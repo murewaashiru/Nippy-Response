@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.shecodeafrica.hackathon.NippyResponse.domain.response.ResponseDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.coyote.BadRequestException;
+//import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ResponseDto> badRequestException(Exception e, HttpServletRequest request) {
         log.info("BadRequestException: {}",e.getMessage());
         ResponseDto response = new ResponseDto();
-        return ResponseEntity.status(422).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

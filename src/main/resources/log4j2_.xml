@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="30">
     <Properties>
+        <Property name="LOG_PATTERN">%d{DEFAULT} | ${hostName} | %-5.5p | %-20.20t | %-32.32c{1.} | %X{bundle.id} - %X{bundle.name} - %X{bundle.version} | %m%n</Property>
+        <Property name="LOG_PATH">./logs</Property>
+        <Property name="APP_NAME">nippy-response</Property>
     </Properties>
     <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+        <File name="appInfoLog" fileName="${LOG_PATH}/${APP_NAME}-info.log" />
+
     </Appenders>
     <Loggers>
-
+        <Root level="debug" additivity="false">
+            <!-- <AppenderRef ref="Console" /> -->
+            <AppenderRef ref="appInfoLog" level="info" />
+        </Root>
     </Loggers>
 </Configuration>

@@ -55,7 +55,7 @@ public class NewsCategoryService {
                 response = new ResponseDto("400", "Category not found", null);
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
-            response = new ResponseDto("200", "Successful", newsCategories);
+            response = new ResponseDto("200", "Successful", null);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }catch (Exception ex){
             response = new ResponseDto("500", ex.getMessage(), null);
